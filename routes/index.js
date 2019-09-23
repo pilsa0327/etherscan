@@ -11,34 +11,34 @@ router.get('/', function(req, res){
         let list = ''
         for(let i=0; i <= 4 ; i++){
             await web3.eth.getBlock(latest_block_number-i, false, function(err, block) {
-               //console.log(block)
+               console.log(block.number)
                 list += ` 
                 <tr>
-                    <td>${block.number}</td>
-                    <td>${block.miner}</td>
+                    <td><a href="/block/${block.number}">${block.number}</a></td>
+                    <td><a href="/address/${block.miner}">${block.miner}</td>
                     <td>${block.transactions.length}</td>
                 </tr>
                 `
             });                                                          
         } 
+
         let html = template.HTML(
             `
-            <form action="/block" method = "post">    
-            <div class="form-group">
-                <label for="exampleInputEmail1">Ethereum Blockchain Explorer</label>
-                <input type="text" class="form-control" name = "address" id="address" aria-describedby="emailHelp"
-                    placeholder="Address / Txn Hash / Block">
-            </div>
-                <button type="submit" class="btn btn-outline-info">Search</button>
-            </form>
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="">
+                    <img src="../public/images/ether.png" width="" height="40" alt="">
+                </a>
+                <form class="form-inline" action = "/block" method = "post">
+                    <input class="form-control mr-sm-2" type="search" name="address" placeholder="Search by Address/ Txn Hash / Block" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+
             `, list);
         
         return res.send(html)
     });
-    
-
-
-})
+});
 module.exports = router;    
 
 

@@ -2899,7 +2899,7 @@ select[multiple].form-group-lg .form-control {
   .form-inline .input-group .input-group-addon,
   .form-inline .input-group .input-group-btn,
   .form-inline .input-group .form-control {
-    width: auto;
+    width: 75%;
   }
   .form-inline .input-group > .form-control {
     width: 100%;
