@@ -9,7 +9,6 @@ module.exports = {
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
             <script src="http://code.jquery.com/jquery-latest.min.js"></script>
             <script type="text/javascript" src="/public/js/bootstrap.js"></script>
            
@@ -56,8 +55,8 @@ module.exports = {
                 <a class="navbar-brand" href="/">
                     <img src="../public/images/ether.png" width="" height="40" alt="">
                 </a>
-                <form action="/block" method = "post">
-                    <input type="search" placeholder="Search by Address/ Txn Hash / Block" name="address" aria-label="Search">
+                <form class="form-inline" action="/block" method = "post">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search by Address/ Txn Hash / Block" name="address" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
@@ -100,7 +99,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <th scope="row">Size:</th>
-                    <td>${Size} bytes</td>
+                    <td>${Size}</td>
                 </tr>
                 <tr>
                     <th scope="row">Gas Used:</th>
@@ -112,7 +111,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <th scope="row">Extra Data:</th>
-                    <td> hex :  ${Extra_Data}</td>
+                    <td>${Extra_Data}</td>
                 </tr>
                 <tr>
                     <th scope="row">Hash:</th>
@@ -189,7 +188,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <th scope="row">Value:</th>
-                    <td>${Value} Ether</td>
+                    <td>${Value}</td>
                 </tr>
                 <tr>
                     <th scope="row">Transaction Fee:</th>
@@ -205,7 +204,7 @@ module.exports = {
                 </tr>
                 <tr>
                     <th scope="row">Gas Price:</th>
-                    <td>${Gas_Price} Ether</td>
+                    <td>${Gas_Price}</td>
                 </tr>
                 <tr>
                     <th scope="row">Nonce:</th>
