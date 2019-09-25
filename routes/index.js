@@ -9,7 +9,13 @@ router.get('/', function(req, res){
         let list = ''
         for (let i = 0; i <= 4; i++) {
             await web3.eth.getBlock(latest_block_number - i, false, function (err, block) {
-                list += ( `<tr><td>${block.number}</td> <td>${block.miner}</td> <td>${block.transactions.length}</td></tr>` )
+                list += `
+                    <tr>
+                        <td><a href="/block/${block.number}">${block.number}</a></td>
+                        <td><a href="/address/${block.miner}">${block.miner}</a></td>
+                        <td>${block.transactions.length}</td>
+                    </tr>
+                    `
             })
         }
 
