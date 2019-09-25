@@ -22,7 +22,3 @@ app.use('/address', addressRouter);
 app.listen(3000, function () {
     console.log('3000port start...')
 });
-
-
-
-

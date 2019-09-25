@@ -18,86 +18,101 @@
 </head>
 
 <body class="container">
-    <nav class="navbar navbar-light bg-light">
+
+    <nav class="navbar">
         <a class="navbar-brand" href="/">
             <img src="../public/images/ether.png" width="" height="40" alt="">
         </a>
-        <form class="form-inline" action="/block" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search by Address/ Txn Hash / Block"
-                name="address" aria-label="Search">
+        <form class="form-inline" action="/block" style="width: 40%;" method="post">
+            <input class="form-control" type="search" style="width: 80%; margin-right: 5px;"
+                placeholder="Search by Address/ Txn Hash / Block" name="address" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </nav>
-    <h3> block # <%= pageId %> </h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Block Height</th>
-            <td><%= blockNumber %></td>
-        </tr>
-        <tr>
-            <th scope="row">Timestamp:</th>
-            <td><%= blockTimestamp %></td>
-        </tr>
-        <tr>
-            <th scope="row">Transactions:</th>
-            <td><%= blockTransactionsLength %></td>
-        </tr>
-        <tr>
-            <th scope="row">Mined by:</th>
-            <td><%= blockMiner %></td>
-        </tr>
-        <tr>
-            <th scope="row">Block Reward:</th>
-            <td><%= blockReward %> ether</td> 
-        </tr>
 
-        <tr>
-            <th scope="row">Uncles Reward:</th>
-            <td></td>
-        </tr>
+    <nav class="navbar navbar-light bg-light">
+        <div>
+            <h5 class="text-body"> Block <a class="text-muted">#<%= pageId %></a> </h5>
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <table class="table table-sm" style="width: 100%; table-layout:fixed; word-break:break-all;">
 
-        <tr>
-            <th scope="row">Difficulty:</th>
-            <td><%= blockDifficulty %></td>
-        </tr>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Overview</a>
+                        </li>
+                    </ul>
 
-        <tr>
-            <th scope="row">Total Difficulty:</th>
-            <td><%= blockTotalDifficulty %></td>
-        </tr>
-        <tr>
-            <th scope="row">Size:</th>
-            <td><%= blockSize %> bytes</td>
-        </tr>
-        <tr>
-            <th scope="row">Gas Used:</th>
-            <td><%= blockGasUsed %></td>
-        </tr>
-        <tr>
-            <th scope="row">Gas Limit:</th>
-            <td><%= blockGasLimit %></td>
-        </tr>
-        <tr>
-            <th scope="row">Extra Data:</th>
-            <td><%= blockExtraData %></td>
-        </tr>
-        <tr>
-            <th scope="row">Hash:</th>
-            <td><%= blockHash %></td>
-        </tr>
-        <tr>
-            <th scope="row">Parent Hash:</th>
-            <td><%= blockParentHash %></td>
-        </tr>
-        <tr>
-            <th scope="row">Sha3Uncles:</th>
-            <td><%= blockSha3Uncles %></td>
-        </tr>
-        <tr>
-            <th scope="row">Nonce:</th>
-            <td><%= blockNonce %></td>
-        </tr>
-    </table>
+                    <tr>
+                        <th scope="row">Block Height</th>
+                        <td><%= blockNumber %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Timestamp:</th>
+                        <td><%= blockTimestamp %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Transactions:</th>
+                        <td><%= blockTransactionsLength %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mined by:</th>
+                        <td><a href="/address/<%= blockMiner %>"><%= blockMiner %></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Block Reward:</th>
+                        <td><%= blockReward %> ether</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Uncles Reward:</th>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Difficulty:</th>
+                        <td><%= blockDifficulty %></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Total Difficulty:</th>
+                        <td><%= blockTotalDifficulty %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Size:</th>
+                        <td><%= blockSize %> bytes</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gas Used:</th>
+                        <td><%= blockGasUsed %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gas Limit:</th>
+                        <td><%= blockGasLimit %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Extra Data:</th>
+                        <td><%= blockExtraData %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hash:</th>
+                        <td><%= blockHash %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Parent Hash:</th>
+                        <td><%= blockParentHash %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Sha3Uncles:</th>
+                        <td><%= blockSha3Uncles %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nonce:</th>
+                        <td><%= blockNonce %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </nav>
 </body>
 
 </html>
