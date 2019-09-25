@@ -2886,7 +2886,7 @@ select[multiple].form-group-lg .form-control {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 70%;
     vertical-align: middle;
   }
   .form-inline .form-control-static {
@@ -2899,7 +2899,7 @@ select[multiple].form-group-lg .form-control {
   .form-inline .input-group .input-group-addon,
   .form-inline .input-group .input-group-btn,
   .form-inline .input-group .form-control {
-    width: 75%;
+    width: auto;
   }
   .form-inline .input-group > .form-control {
     width: 100%;

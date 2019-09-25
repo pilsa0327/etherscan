@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "supervisor app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "big-number": "^2.0.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "web3": "^1.2.1"

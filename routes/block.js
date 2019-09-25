@@ -1,17 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var template = require('../public/lib/template.js');
+const express = require('express');
+const router = express.Router();
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'))
 const bodyParser = require('body-parser');
+const addComma = require('../public/js/addComma');
 
 router.use(bodyParser.urlencoded({ extended: false }));
-
-function addComma(num) {
-    var regexp = /\B(?=(\d{3})+(?!\d))/g;
-    return num.toString().replace(regexp, ',');
-}
-
 
 router.post('/', function(req, res){
     let { address } = req.body;
@@ -25,26 +19,28 @@ router.post('/', function(req, res){
     }
 })
 
-router.get('/:pageId', function(req, res){
-    
+router.get('/:pageId', async function(req, res){
     let pageId = req.params.pageId;
-    web3.eth.getBlock(pageId, false, function(err, block) {
-   // console.log(block);
-   typeof(block.timestamp)
-   var timestamp = block.timestamp * 1000;
-   var date = new Date(timestamp);
-   
-
-    let html = template.blockPage(pageId, block.number, date, block.transactions.length, block.miner,
-         '', '', addComma(block.difficulty), addComma(block.totalDifficulty), addComma(block.size), addComma(block.gasUsed), addComma(block.gasLimit), block.extraData, block.hash,
-         block.parentHash, block.sha3Uncles, block.nonce)
-    return res.send(html)
+    let txFee = 2000000000000000000;
+    await web3.eth.getBlock(pageId, false, async function (err, block) {
+        var timestamp = block.timestamp * 1000;
+        var date = new Date(timestamp);
+        for (let i = 0; i <= block.transactions.length - 1; i++) {
+            await web3.eth.getTransaction(block.transactions[i], false, async function (err, tx) {
+                await web3.eth.getTransactionReceipt(block.transactions[i].toString(), false, async function (err, txReceipt) {
+                    txFee += (tx.gasPrice * txReceipt.gasUsed)
+                    //console.log(txFee)
+                })
+            })
+        }
+        setTimeout(function () {
+            return res.render('block', {
+                pageId: pageId, blockNumber: block.number, blockTimestamp: date, blockTransactionsLength: block.transactions.length, blockMiner: block.miner,
+                blockDifficulty: addComma(block.difficulty), blockTotalDifficulty: addComma(block.totalDifficulty), blockSize: addComma(block.size), blockGasUsed: addComma(block.gasUsed), blockGasLimit: addComma(block.gasLimit), blockExtraData: block.extraData, blockHash: block.hash,
+                blockParentHash: block.parentHash, blockSha3Uncles: block.sha3Uncles, blockNonce: block.nonce, blockReward: web3.utils.fromWei(txFee.toString(10))
+            })
+        }, 500)
     })
 })
 
 module.exports = router;
-
-
-
-
-//class="form-inline"   mr-sm-2 class="form-control"

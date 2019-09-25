@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Etherscan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/public/js/bootstrap.js"></script>
+</head>
+
+<body class="container">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="../public/images/ether.png" width="" height="40" alt="">
+        </a>
+        <form class="form-inline" action="/block" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by Address/ Txn Hash / Block"
+                name="address" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <h3> block # <%= pageId %> </h3>
+    <table class="table">
+        <tr>
+            <th scope="row">Block Height</th>
+            <td><%= blockNumber %></td>
+        </tr>
+        <tr>
+            <th scope="row">Timestamp:</th>
+            <td><%= blockTimestamp %></td>
+        </tr>
+        <tr>
+            <th scope="row">Transactions:</th>
+            <td><%= blockTransactionsLength %></td>
+        </tr>
+        <tr>
+            <th scope="row">Mined by:</th>
+            <td><%= blockMiner %></td>
+        </tr>
+        <tr>
+            <th scope="row">Block Reward:</th>
+            <td><%= blockReward %> ether</td> 
+        </tr>
+
+        <tr>
+            <th scope="row">Uncles Reward:</th>
+            <td></td>
+        </tr>
+
+        <tr>
+            <th scope="row">Difficulty:</th>
+            <td><%= blockDifficulty %></td>
+        </tr>
+
+        <tr>
+            <th scope="row">Total Difficulty:</th>
+            <td><%= blockTotalDifficulty %></td>
+        </tr>
+        <tr>
+            <th scope="row">Size:</th>
+            <td><%= blockSize %> bytes</td>
+        </tr>
+        <tr>
+            <th scope="row">Gas Used:</th>
+            <td><%= blockGasUsed %></td>
+        </tr>
+        <tr>
+            <th scope="row">Gas Limit:</th>
+            <td><%= blockGasLimit %></td>
+        </tr>
+        <tr>
+            <th scope="row">Extra Data:</th>
+            <td><%= blockExtraData %></td>
+        </tr>
+        <tr>
+            <th scope="row">Hash:</th>
+            <td><%= blockHash %></td>
+        </tr>
+        <tr>
+            <th scope="row">Parent Hash:</th>
+            <td><%= blockParentHash %></td>
+        </tr>
+        <tr>
+            <th scope="row">Sha3Uncles:</th>
+            <td><%= blockSha3Uncles %></td>
+        </tr>
+        <tr>
+            <th scope="row">Nonce:</th>
+            <td><%= blockNonce %></td>
+        </tr>
+    </table>
+</body>
+
+</html>
