@@ -2,88 +2,77 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Etherscan</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="/public/js/bootstrap.js"></script>
+    <% include navi/head %>
 </head>
 
 <body class="container">
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="../public/images/ether.png" width="" height="40" alt="">
-        </a>
-        <form class="form-inline" action="/block" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search by Address/ Txn Hash / Block"
-                name="address" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
-    <h3> Transaction Details </h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Transaction Hash:</th>
-            <td><%= hash %></td>
-        </tr>
-        <tr>
-            <th scope="row">Status:</th>
-            <td><%= status %></td>
-        </tr>
-        <tr>
-            <th scope="row">Block:</th>
-            <td><%= blockNumber %></td>
-        </tr>
-        <tr>
-            <th scope="row">Timestamp:</th>
-            <td><%=  %></td>
-        </tr>
-        <tr>
-            <th scope="row">From:</th>
-            <td><%= from %></td>
-        </tr>
+    <% include navi/header %>
+    <br/>
+    <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background: rgb(20, 77, 117)">
+        <div><br/>
+            <h5 class="text-white">Transaction Details</h5>
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <table class="table table-sm" style="width: 100%; table-layout:fixed; word-break:break-all;">
 
-        <tr>
-            <th scope="row">To:</th>
-            <td><%= to %></td>
-        </tr>
-        <tr>
-            <th scope="row">Value:</th>
-            <td><%= value %></td>
-        </tr>
-        <tr>
-            <th scope="row">Transaction Fee:</th>
-            <td><%=  %></td>
-        </tr>
-        <tr>
-            <th scope="row">Gas Limit:</th>
-            <td><%=  %></td>
-        </tr>
-        <tr>
-            <th scope="row">Gas Used by Transaction:</th>
-            <td><%= gasUsed %></td>
-        </tr>
-        <tr>
-            <th scope="row">Gas Price:</th>
-            <td><%= gasPrice %></td>
-        </tr>
-        <tr>
-            <th scope="row">Nonce:</th>
-            <td><%= nonce %></td>
-        </tr>
-        <tr>
-            <th scope="row">Input Data:</th>
-            <td><%= input %></td>
-        </tr>
-    </table>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Overview</a>
+                        </li>
+                    </ul>
+
+                    <tr>
+                        <th scope="row">Transaction Hash:</th>
+                        <td><%= hash %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status:</th>
+                        <td><%= status %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Block:</th>
+                        <td><%= blockNumber %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Timestamp:</th>
+                        <td><%= timestamp %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">From:</th>
+                        <td><a href="/address/<%= from %>"><%= from %></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">To:</th>
+                        <td><a href="/address/<%= to %>"><%= to %></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Value:</th>
+                        <td><%= value %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Transaction Fee:</th>
+                        <td><%= txFee  %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gas Used by Transaction:</th>
+                        <td><%= gasUsed %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gas Price:</th>
+                        <td><%= gasPrice %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nonce:</th>
+                        <td><%= nonce %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Input Data:</th>
+                        <td><%= input %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </nav>
+
 </body>
 
 </html>
