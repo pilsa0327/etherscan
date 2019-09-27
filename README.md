@@ -13,12 +13,21 @@ $ npm start
 http://localhot:3000 으로 접속하시면 됩니다.
 
  2. 메인페이지(BlcokList,TxList)
-	![mainpage](./screenshot/main.png)
+
+    ![mainpage](./screenshot/main.png)
+    
  3. BlockInfo
-	![blockpage](./screenshot/blockinfo.png)
+
+    ![blockpage](./screenshot/blockinfo.png)
+    
  4. AddressBalance
-	![addrpage](./screenshot/addrinfo.png)
+
+    ![addrpage](./screenshot/addrinfo.PNG)
+    
  5. TransactionInfo
-	![txpage](./screenshot/txinfo.png)
+
+    ![txpage](./screenshot/txinfo.png)
+    
  6. errorPage
-	![errpage](./screenshot/err.png)
+
+    ![errpage](./screenshot/err.png)
