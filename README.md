@@ -5,7 +5,7 @@
 ### 사용방법
  1. 소스 내려받고 서버 실행하는 법
 ```
-$ git clone https://github.com/Hyun-Geol/etherscan.git
+$ git clone https://github.com/pilsa0327/etherscan.git
 $ cd etherscan
 $ npm i
 $ npm start
