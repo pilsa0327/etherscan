@@ -7,8 +7,32 @@
 
 <body class="container">
     <% include navi/header %>
-    <h1>해당 검색 조건이 맞지 않습니다.</h1>
-</body>
-    
-</html>
+    </br>
 
+    <div class="col-md-8" style="position: fixed; left: 200px; right:200;">
+        <div class="card text-center">
+            <div class="card-header">
+                Error!
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" style="text-align: left">
+                <h5 class="card-title">검색결과가 없습니다.</h5>
+                <p class="card-text">
+                    <li>모든 단어의 철자가 정확한지 확인하세요</li>
+                    <li> 다른 검색어를 사용해 보세요</li>
+                    <li>더 일반적인 검색어를 사용해 보세요</li>
+                    <li>키워드 수를 줄여보세요.</li>
+                </p>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-footer text-muted">
+                <button onclick="location.href='/'" class="btn btn-outline-success my-2 my-sm-0"
+                    type="submit">Home</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -9,30 +9,30 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/', async function (req, res) {
     let { address } = req.body;
-    console.log(address)
     await web3.eth.getBlockNumber(function (err, rtn) {
-        if(address.length === 0){
+        if (address.length === 0 || address > rtn && address.length !== 42 && address.length !== 66) {
             return res.redirect(`/error`)
         }
         else if (address <= rtn) {
             return res.redirect(`/block/${address}`)
         }
         else if (address.length === 42) {
-            return res.redirect(`/address/${address}`)
+            let ckAddr = web3.utils.checkAddressChecksum(address)
+            if (ckAddr === false){
+                return res.redirect(`/error`)
+            } else {
+                return res.redirect(`/address/${address}`)
+            }
         }
         else if (address.length === 66) {
             return res.redirect(`/tx/${address}`)
-        }
-        else {
-            return res.redirect(`/error`)
         }
     })
 })
 
 router.get('/:pageId', async function(req, res){
-    
     let pageId = req.params.pageId;
-    
+
     if (pageId < 1700000){
         txFee = 5000000000000000000;
     } else if (pageId < 4230000){
@@ -51,7 +51,7 @@ router.get('/:pageId', async function(req, res){
                 await web3.eth.getTransactionReceipt(block.transactions[i].toString(), false, async function (err, txReceipt) {
                     
                     txFee += (tx.gasPrice * txReceipt.gasUsed)
-                    //console.log(txFee)
+    
                 })
             })
         }
