@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
+
 const errRouter = require('./routes/error');
 const indexRouter = require('./routes/index');
 const blockRouter = require('./routes/block');
@@ -9,8 +9,7 @@ const addressRouter = require('./routes/address');
 
 app.use('/public', express.static(__dirname + "/public"));
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+
 
 app.set('views', __dirname + '/views');
 

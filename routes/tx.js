@@ -6,9 +6,6 @@ const addComma = require('../public/js/addComma');
 //var Window = document.defaultView;
 //document.defaultView = value;
 
-
-
-
 router.get('/:pageId', function (req, res) {
     let pageId = req.params.pageId;
     web3.eth.getTransaction(pageId, false, function (err, tx) {

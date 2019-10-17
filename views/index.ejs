@@ -6,7 +6,7 @@
 </head>
 
 <body class="container">
-    <% include navi/header %><br/>
+    <% include navi/header %><br />
     <nav class="navbar shadow-sm p-3 mb-5 rounded">
         <h5 class="text-body"> Latest Blocks </h5>
         <table class="table" style="width: 100%; table-layout:fixed; word-break:break-all;">
@@ -18,11 +18,17 @@
                 </tr>
             </thead>
             <tbody>
-                <%- bkList %>
+                <% for(let i = 0; i < blocks.length; i++){%>
+                <tr>
+                    <td><a href="/block/<%= blocks[i].number %>"><%= blocks[i].number %></a></td>
+                    <td class="hash-tag text-truncate"><a href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
+                    <td><%= blocks[i].transactions.length %></td>
+                </tr>
+                <% } %>
             </tbody>
         </table>
     </nav>
-    
+
     <nav class="navbar shadow-sm p-3 mb-5 rounded" style="border-color: slateblue">
         <h5 class="text-body"> Latest Transactions </h5>
         <table class="table" style="width: 100%; table-layout:fixed; word-break:break-all;">
@@ -34,7 +40,15 @@
                 </tr>
             </thead>
             <tbody>
-                <%- txList %>
+
+                <% for(let i = 0; i < txs.length; i++){ %>
+                <tr>
+                    <td class="hash-tag text-truncate"><a href="/tx/<%= txs[i].hash%>"><%= txs[i].hash%></a></td>
+                    <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].from%>"><%= txs[i].from%></td>
+                    <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].to%>"><%= txs[i].to%></td>
+                </tr>
+                <% } %>
+
             </tbody>
         </table>
     </nav>
