@@ -5,7 +5,7 @@ const wi = require('../utils/webInterface')
 
 router.get('/', async function (req, res) {
 
-    let { maxCnt=10 } = req.query
+    let { maxCnt=5 } = req.query
 
     let latest_block_number = await wi.getBlockNumber();
     let blocks = await wi.getBlockRange(latest_block_number, maxCnt );
