@@ -21,7 +21,7 @@ router.get('/:pageId', function (req, res) {
                 let date = new Date(timestamp);
                 return res.render('tx', {
                     hash: tx.hash, status: txReceipt.status, blockNumber: tx.blockNumber, from: tx.from, to: tx.to, value: value,
-                    gasUsed: addComma(txReceipt.gasUsed), gasPrice: price, nonce: tx.nonce, input: tx.input, timestamp: date, txFee: txFee
+                    gasUsed: addComma(txReceipt.gasUsed), gasPrice: price, nonce: tx.nonce, input: web3.utils.hexToUtf8(tx.input), timestamp: date, txFee: txFee
                 })
             })
         })
