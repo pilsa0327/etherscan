@@ -75,6 +75,11 @@
         </div>
     </nav>
 
+    <% if (status === 'Pending') { %> 
+    <script>
+        setInterval(() => {history.go(0)}, 10000)
+    </script>
+    <% } %>
 </body>
 
 </html>
