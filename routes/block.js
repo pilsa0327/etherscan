@@ -11,7 +11,7 @@ router.post('/', async function (req, res) {
     let { address } = req.body;
     await web3.eth.getBlockNumber(function (err, rtn) {
         if (address.length === 0 || address > rtn && address.length !== 42 && address.length !== 66) {
-            return res.redirect(`/error`)
+            return res.render('error')
         }
         else if (address <= rtn) {
             return res.redirect(`/block/${address}`)
@@ -33,6 +33,13 @@ router.post('/', async function (req, res) {
 router.get('/:pageId', async function(req, res){
     let pageId = req.params.pageId;
 
+    await web3.eth.getBlockNumber(function (err, rtn) {
+        if(pageId > rtn) {
+            return res.render(`error`)
+        }
+    });
+
+    
     if (pageId < 1700000){
         txFee = 5000000000000000000;
     } else if (pageId < 4230000){
