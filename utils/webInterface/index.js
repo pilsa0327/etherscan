@@ -1,5 +1,4 @@
-const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/25c7c08910c04b0c9be79c09f559652e'))
+let web3 = global.web3;
 
 const getBlockNumber = async () => {
     const blockNumber = await web3.eth.getBlockNumber()
@@ -52,6 +51,7 @@ const getLatesTxDetailInfo = async (txs, range=5) => {
 }
 
 module.exports = {
+    web3,
     getBlockNumber,
     getBlockRange,
     getTansactions,
