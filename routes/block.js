@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/25c7c08910c04b0c9be79c09f559652e'))
 const bodyParser = require('body-parser');
 const addComma = require('../public/js/addComma');
+let web3 = global.web3;
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post('/', async function (req, res) {
     let { address } = req.body;
+    console.log('block')
     await web3.eth.getBlockNumber(function (err, rtn) {
         if (address.length === 0 || address > rtn && address.length !== 42 && address.length !== 66) {
             return res.render('error')

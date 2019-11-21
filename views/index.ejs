@@ -21,7 +21,8 @@
                 <% for(let i = 0; i < blocks.length; i++){%>
                 <tr>
                     <td><a href="/block/<%= blocks[i].number %>"><%= blocks[i].number %></a></td>
-                    <td class="hash-tag text-truncate"><a href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
+                    <td class="hash-tag text-truncate"><a
+                            href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
                     <td><%= blocks[i].transactions.length %></td>
                 </tr>
                 <% } %>
