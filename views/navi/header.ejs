@@ -1,52 +1,11 @@
 <nav class="navbar">
-    <form class="form-inline" action="/block" style="width: 100%;" method="post">
-        <a class="navbar-brand" href="/">
-            <img src="../public/images/escan.png" width="126" height="40" alt="">
-        </a>
-        <input class="form-control" type="search" style="width: 50%; margin-right: 5px;"
+    <a class="navbar-brand" href="/">
+        <img src="../public/images/escan.png" height="40" alt="">
+    </a>
+    <form class="form-inline" action="/" style="width: 50%;" method="post" align="right">
+        <input class="form-control" type="search" style="width: 80%; margin-right: 5px;"
             placeholder="Search by Address/ Txn Hash / Block" name="address" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right:5px;">Search</button>
     </form>
-    <div class="btn-group">
-        <button type="button" id="Server" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-            aria-expanded="false">
-            Ropsten <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><button class="divider" onClick="web3server(this.id)" id="MainNet">MainNet</button></li>
-            <li><button class="divider" onClick="web3server(this.id)" id="Ropsten">Ropsten</button></li>
-            <li><button class="divider" onClick="web3server(this.id)" id="Rinkeby">Rinkeby</button></li>
-            <li><button class="divider" onClick="web3server(this.id)" id="Kovan">Kovan</button></li>
-            <li><button class="divider" onClick="web3server(this.id)" id="Goerli">Goerli</button></li>
-        </ul>
-    </div>
-</nav>
-<script>
-    
-    let check = $('#Server').text();
-    check = check.trim()
-    if( check ) {
-        web3server(check)
-    }
 
-    
-    function web3server(network) {
-        const passData = {
-            network: network,
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/changeNetwork',
-            contentType: "application/json; charset=utf-8",
-            dataType: 'JSON',
-            data: JSON.stringify(passData),
-            success: function (result, body, { status }) {
-                $('#Server').html(network)
-               
-            },
-            error: function (request, status, error) {
-                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-            }
-        })
-    }
-</script>
+</nav>

@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-let web3 = global.web3;
+const Web3 = require('web3');
+
 
 router.get('/:pageId', async function (req, res) {
+    let web3 = new Web3(new Web3.providers.HttpProvider(req.session.web3));
     let pageId = req.params.pageId; 
     let addrCheck = await web3.utils.isAddress(pageId)
     if (addrCheck !== true) {

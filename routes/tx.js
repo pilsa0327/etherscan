@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const addComma = require('../public/js/addComma');
-let web3 = global.web3;
+const Web3 = require('web3');
 
 router.get('/:pageId', async function (req, res) {
+    let web3 = new Web3(new Web3.providers.HttpProvider(req.session.web3));
     let pageId = req.params.pageId;
     await web3.eth.getTransaction(pageId, false, async function (err, tx) {
         if(tx === null || err){

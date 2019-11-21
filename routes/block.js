@@ -2,35 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const addComma = require('../public/js/addComma');
-let web3 = global.web3;
+const Web3 = require('web3');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
-router.post('/', async function (req, res) {
-    let { address } = req.body;
-    console.log('block')
-    await web3.eth.getBlockNumber(function (err, rtn) {
-        if (address.length === 0 || address > rtn && address.length !== 42 && address.length !== 66) {
-            return res.render('error')
-        }
-        else if (address <= rtn) {
-            return res.redirect(`/block/${address}`)
-        }
-        else if (address.length === 42) {
-            let ckAddr = web3.utils.checkAddressChecksum(address)
-            if (ckAddr === false){
-                return res.redirect(`/error`)
-            } else {
-                return res.redirect(`/address/${address}`)
-            }
-        }
-        else if (address.length === 66) {
-            return res.redirect(`/tx/${address}`)
-        }
-    })
-})
-
 router.get('/:pageId', async function(req, res){
+    let web3 = new Web3(new Web3.providers.HttpProvider(req.session.web3));
     let pageId = req.params.pageId;
 
     await web3.eth.getBlockNumber(function (err, rtn) {

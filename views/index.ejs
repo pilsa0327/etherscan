@@ -6,7 +6,20 @@
 </head>
 
 <body class="container">
-    <% include navi/header %><br />
+    <% include navi/header %>
+    <div class="btn-group" >
+            <button type="button" id="Server" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                aria-expanded="false">
+                <%- network -%> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" style="border: 0;">
+                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id= "MainNet">MainNet</button></li>
+                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Ropsten">Ropsten</button></li>
+                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Rinkeby">Rinkeby</button></li>
+                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Kovan">Kovan</button></li>
+                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Goerli">Goerli</button></li>
+            </ul>
+        </div><br><br>
     <nav class="navbar shadow-sm p-3 mb-5 rounded">
         <h5 class="text-body"> Latest Blocks </h5>
         <table class="table" style="width: 100%; table-layout:fixed; word-break:break-all;">
@@ -18,14 +31,22 @@
                 </tr>
             </thead>
             <tbody>
+                <div class="block">
                 <% for(let i = 0; i < blocks.length; i++){%>
-                <tr>
+                <tr class="block">
                     <td><a href="/block/<%= blocks[i].number %>"><%= blocks[i].number %></a></td>
                     <td class="hash-tag text-truncate"><a
                             href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
                     <td><%= blocks[i].transactions.length %></td>
                 </tr>
                 <% } %>
+                <% for(let i = 0; i < blocks.length; i++){%>
+                <tr class="changeBlock hide">
+                    <td id="block"></td>
+                    <td id="blcok"></td>
+                </tr>
+                <% } %>
+                </div>
             </tbody>
         </table>
     </nav>
@@ -40,7 +61,7 @@
                     <th scope="col">To</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tx">
 
                 <% for(let i = 0; i < txs.length; i++){ %>
                 <tr>
@@ -53,6 +74,43 @@
             </tbody>
         </table>
     </nav>
+
+    <script>
+    
+            /*let check = $('#Server').text();
+            check = check.trim()
+            if( check ) {
+                web3server(check)
+            }*/
+        
+            
+            function web3server(network) {
+                const passData = {
+                    network: network,
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/changeNetwork',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'JSON',
+                    data: JSON.stringify(passData),
+                    success: function (result, body, { status }) {
+                        //$('.block').addClass('hide')
+                        // $('.changeBlock').removeClass('hide')
+                        // $('')
+                        // $('#block').html(result)
+                        location.reload()
+                        
+                    },
+                    error: function (request, status, error) {
+                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    },
+                    complete : function() {
+                        
+                    }
+                })
+            }
+        </script>
 </body>
 
 </html>
