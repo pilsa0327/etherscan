@@ -3,108 +3,150 @@
 
 <head>
     <% include navi/head %>
+    <style>
+        .table {
+            width: 100%;
+            table-layout: fixed;
+            word-break: break-all;
+            text-align: center;
+        }
+        .table thead th {
+            border-bottom:2px solid dimgrey
+        }
+        .table td, .table th {
+            border-top:none;
+        }
+
+        .block tr a,
+        .tx tr a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .ftco-footer {
+            font-size: 16px;
+            background: dimgrey;
+            padding: 3em 0;
+            z-index: 0;
+        }
+    </style>
 </head>
 
-<body class="container">
-    <% include navi/header %>
-    <div class="btn-group" >
-            <button type="button" id="Server" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+<body>
+    <div class="container">
+        <% include navi/header %>
+
+        <!--network-->
+        <div class="btn-group">
+            <button type="button" id="Server" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
                 aria-expanded="false">
                 <%- network -%> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" style="border: 0;">
-                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id= "MainNet">MainNet</button></li>
-                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Ropsten">Ropsten</button></li>
-                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Rinkeby">Rinkeby</button></li>
-                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Kovan">Kovan</button></li>
-                <li><button class="btn btn-info" onClick="web3server(this.id)" style="width: 103.73px; margin-bottom: 1px;" id="Goerli">Goerli</button></li>
+                <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
+                        style="width: 103.73px; margin-bottom: 1px;" id="MainNet">MainNet</button></li>
+                <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
+                        style="width: 103.73px; margin-bottom: 1px;" id="Ropsten">Ropsten</button></li>
+                <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
+                        style="width: 103.73px; margin-bottom: 1px;" id="Rinkeby">Rinkeby</button></li>
+                <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
+                        style="width: 103.73px; margin-bottom: 1px;" id="Kovan">Kovan</button></li>
+                <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
+                        style="width: 103.73px; margin-bottom: 1px;" id="Goerli">Goerli</button></li>
             </ul>
-        </div><br><br>
-    <nav class="navbar shadow-sm p-3 mb-5 rounded">
-        <h5 class="text-body"> Latest Blocks </h5>
-        <table class="table" style="width: 100%; table-layout:fixed; word-break:break-all;">
-            <thead>
-                <tr>
-                    <th scope="col">Blocks Number</th>
-                    <th scope="col">Miner</th>
-                    <th scope="col">txns</th>
-                </tr>
-            </thead>
-            <tbody>
-                <div class="block">
-                <% for(let i = 0; i < blocks.length; i++){%>
-                <tr class="block">
-                    <td><a href="/block/<%= blocks[i].number %>"><%= blocks[i].number %></a></td>
-                    <td class="hash-tag text-truncate"><a
-                            href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
-                    <td><%= blocks[i].transactions.length %></td>
-                </tr>
-                <% } %>
-                </div>
-            </tbody>
-        </table>
-    </nav>
+        </div>
+    </div>
 
-    <nav class="navbar shadow-sm p-3 mb-5 rounded" style="border-color: slateblue">
-        <h5 class="text-body"> Latest Transactions </h5>
-        <table class="table" style="width: 100%; table-layout:fixed; word-break:break-all;">
-            <thead>
-                <tr>
-                    <th scope="col">Tx</th>
-                    <th scope="col">From</th>
-                    <th scope="col">To</th>
-                </tr>
-            </thead>
-            <tbody class="tx">
+    <!--Blocks-->
+    <div class="container">
+        <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background-color:rgb(245, 236, 225)" >
+            <h5 class="text-body"> Latest Blocks </h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Blocks Number</th>
+                        <th scope="col">Miner</th>
+                        <th scope="col">txns</th>
+                    </tr>
+                </thead>
+                <tbody class="block">
+                    <% for(let i = 0; i < blocks.length; i++){%>
+                    <tr class="block">
+                        <td><a href="/block/<%= blocks[i].number %>"><%= blocks[i].number %></a></td>
+                        <td class="hash-tag text-truncate"><a
+                                href="/address/<%= blocks[i].miner %>"><%= blocks[i].miner %></a></td>
+                        <td><%= blocks[i].transactions.length %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </nav>
 
-                <% for(let i = 0; i < txs.length; i++){ %>
-                <tr>
-                    <td class="hash-tag text-truncate"><a href="/tx/<%= txs[i].hash%>"><%= txs[i].hash%></a></td>
-                    <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].from%>"><%= txs[i].from%></td>
-                    <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].to%>"><%= txs[i].to%></td>
-                </tr>
-                <% } %>
+        <!--Transactions-->
+        <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background-color:rgb(245, 236, 225)" >
+            <h5 class="text-body"> Latest Transactions </h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Tx</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                    </tr>
+                </thead>
+                <tbody class="tx">
+                    <% for(let i = 0; i < txs.length; i++){ %>
+                    <tr>
+                        <td class="hash-tag text-truncate"><a href="/tx/<%= txs[i].hash%>"><%= txs[i].hash%></a></td>
+                        <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].from%>"><%= txs[i].from%></td>
+                        <td class="hash-tag text-truncate"><a href="/address/<%= txs[i].to%>"><%= txs[i].to%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </nav>
+    </div>
 
-            </tbody>
-        </table>
-    </nav>
+    <footer class="ftco-footer ftco-section">
+        <div class="container">
+        </div>
+    </footer>
 
     <script>
-    
-            /*let check = $('#Server').text();
-            check = check.trim()
-            if( check ) {
-                web3server(check)
-            }*/
-        
-            
-            function web3server(network) {
-                const passData = {
-                    network: network,
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: '/changeNetwork',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'JSON',
-                    data: JSON.stringify(passData),
-                    success: function (result, body, { status }) {
-                        //$('.block').addClass('hide')
-                        // $('.changeBlock').removeClass('hide')
-                        // $('')
-                        // $('#block').html(result)
-                        location.reload()
-                        
-                    },
-                    error: function (request, status, error) {
-                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-                    },
-                    complete : function() {
-                        
-                    }
-                })
+
+        /*let check = $('#Server').text();
+        check = check.trim()
+        if( check ) {
+            web3server(check)
+        }*/
+
+
+        function web3server(network) {
+            const passData = {
+                network: network,
             }
-        </script>
+            $.ajax({
+                type: 'POST',
+                url: '/changeNetwork',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'JSON',
+                data: JSON.stringify(passData),
+                success: function (result, body, { status }) {
+                    //$('.block').addClass('hide')
+                    // $('.changeBlock').removeClass('hide')
+                    // $('')
+                    // $('#block').html(result)
+                    location.reload()
+
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                },
+                complete: function () {
+
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

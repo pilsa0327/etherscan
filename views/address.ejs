@@ -5,32 +5,29 @@
     <% include navi/head %>
 </head>
 
-<body>
-    <div class="container">
-        <% include navi/header %>
-        <br/>
-        <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background: rgb(20, 77, 117)">
-            <div>
-                <h5 class="text-white"> Address </h5>
-                <h6>
-                    <p class="text-white"><%= address %></p>
-                </h6><br/>
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                    <table class="table table-sm" style="width: 100%; table-layout:fixed; word-break:break-all;">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Overview</a>
-                            </li>
-                        </ul>
-                        <tr>
-                            <th scope="row">balance:</th>
-                            <td><%= bal %></td>
-                        </tr>
-                    </table>
-                </div>
+<body class="container">
+    <% include navi/header %>
+    <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background:dimgrey">
+        <div>
+            <h5 class="text-white"> Address </h5>
+            <h6>
+                <p class="text-white"><%= address %></p>
+            </h6><br />
+            <div class="shadow-sm p-3 mb-5 bg-white rounded" style="margin-left:2rem; margin-right:2rem">
+                <table class="table table-sm" style="width: 100%; table-layout:fixed; word-break:break-all;">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Overview</a>
+                        </li>
+                    </ul>
+                    <tr>
+                        <th scope="row">balance:</th>
+                        <td><%= bal %></td>
+                    </tr>
+                </table>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </body>
 
 </html>

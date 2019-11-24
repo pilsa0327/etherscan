@@ -5,8 +5,6 @@ const logger = require('morgan');
 
 const bodyParser = require('body-parser');
 
-
-
 const errRouter = require('./routes/error');
 const indexRouter = require('./routes/index');
 const blockRouter = require('./routes/block');

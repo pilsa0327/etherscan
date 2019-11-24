@@ -3,16 +3,20 @@
 
 <head>
     <% include navi/head %>
+    <style> 
+        .table tr td a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 
 <body class="container">
-        
     <% include navi/header %>
-    <br/>
-    <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background: rgb(20, 77, 117)">
-        <div><br/>
-            <h5 class="text-white"> Block <a class="text-white">#<%= pageId %></a></h5>
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+    <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background:dimgrey">
+        <div>
+            <h5 class="text-white" style="margin-bottom: 2rem;"> Block <a class="text-white">#<%= pageId %></a></h5>
+            <div class="shadow-sm p-3 mb-5 bg-white rounded" style="margin-left:2rem; margin-right:2rem">
                 <table class="table table-sm" style="width: 100%; table-layout:fixed; word-break:break-all;">
 
                     <ul class="nav nav-tabs">
