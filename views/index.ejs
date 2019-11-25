@@ -20,15 +20,9 @@
         .block tr a,
         .tx tr a {
             text-decoration: none;
-            color: black;
+            color: #646464;
         }
 
-        .ftco-footer {
-            font-size: 16px;
-            background: dimgrey;
-            padding: 3em 0;
-            z-index: 0;
-        }
     </style>
 </head>
 
@@ -42,7 +36,7 @@
                 aria-expanded="false">
                 <%- network -%> <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" role="menu" style="border: 0;">
+            <ul class="dropdown-menu" role="menu" style="border: 0; min-width: 6.5rem; padding:0;">
                 <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
                         style="width: 103.73px; margin-bottom: 1px;" id="MainNet">MainNet</button></li>
                 <li><button class="btn btn-outline-secondary" onClick="web3server(this.id)"
@@ -59,7 +53,7 @@
 
     <!--Blocks-->
     <div class="container">
-        <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background-color:rgb(245, 236, 225)" >
+        <nav class="navbar shadow-sm p-3 mb-5 rounded"  >
             <h5 class="text-body"> Latest Blocks </h5>
             <table class="table">
                 <thead>
@@ -83,7 +77,7 @@
         </nav>
 
         <!--Transactions-->
-        <nav class="navbar shadow-sm p-3 mb-5 rounded" style="background-color:rgb(245, 236, 225)" >
+        <nav class="navbar shadow-sm p-3 mb-5 rounded">
             <h5 class="text-body"> Latest Transactions </h5>
             <table class="table">
                 <thead>
@@ -105,11 +99,6 @@
             </table>
         </nav>
     </div>
-
-    <footer class="ftco-footer ftco-section">
-        <div class="container">
-        </div>
-    </footer>
 
     <script>
 
